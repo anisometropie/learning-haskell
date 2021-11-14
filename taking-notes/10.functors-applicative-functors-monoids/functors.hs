@@ -46,3 +46,16 @@ ghci> (*3) . (+100) $ 1
 303  
 ghci> fmap (show . (*3)) (*100) 1  
 "300" 
+
+-- lifting functions
+ghci> :t (*2)  
+(*2) :: Num a => a -> a
+ghci> :t fmap (*2)  
+fmap (*2) :: (Functor f, Num a) => f a -> f a
+
+ghci> :t replicate 3
+replicate 3 :: a -> [a]
+ghci> :t fmap (replicate 3)  
+fmap (replicate 3) :: Functor f => f a -> f [a]
+
+-- NEXT The second law says that composing two functions and then

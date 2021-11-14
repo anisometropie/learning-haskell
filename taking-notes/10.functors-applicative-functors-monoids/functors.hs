@@ -35,3 +35,14 @@ instance Functor ((->) r) where
 -- functions are made into boxes
 
 -- in the end it’s nothing but function composition, but in the light of functors
+
+ghci> :t fmap (*3) (+100)  
+fmap (*3) (+100) :: (Num a) => a -> a  
+ghci> fmap (*3) (+100) 1  
+303  
+ghci> (*3) `fmap` (+100) $ 1  
+303  
+ghci> (*3) . (+100) $ 1  
+303  
+ghci> fmap (show . (*3)) (*100) 1  
+"300" 
